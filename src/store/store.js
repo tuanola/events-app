@@ -1,19 +1,23 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 
-import { filterMutations } from './mutations'
+import { eventMutations, filterMutations } from './mutations'
+import { eventGetters } from './getters'
+import { eventActions } from './actions'
 
 Vue.use(Vuex)
 
 export const store = new Vuex.Store({
   state: {
+    eventsList: [],
+    event: {},
+    showLoader: false,
     filterConditions: {
       what: '',
       where: ''
     }
   },
-  getters: {
-    storedFilterKey: state => state.what
-  },
-  mutations: Object.assign({}, filterMutations)
+  getters: Object.assign({}, eventGetters),
+  mutations: Object.assign({}, filterMutations, eventMutations),
+  actions: Object.assign({}, eventActions)
 })

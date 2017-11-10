@@ -15,7 +15,7 @@
           <span v-for="person in item.people" class="person badge">
             {{ person }}
           </span>
-          <div v-html="truncate(getInfo(item.description), 280)" class="event-description card-text"></div>
+          <div v-html="truncate(item.description.text, 280)" class="event-description card-text"></div>
         </div>
       </div>
     </div>
@@ -79,15 +79,14 @@
   import { REMOVE_CONDITION } from '../store/mutation-types'
 
   export default{
-    props: {
-      list: Array
-    },
-
     computed: {
+      list () {
+        return this.$store.getters.allEvents
+      },
       filteredList () {
         const filterKey = this.filterKey && this.filterKey.toLowerCase()
         const filterLocation = this.filterLocation && this.filterLocation.toLowerCase()
-        let list = this.list
+        let list = this.$store.getters.allEvents
         if (filterKey) {
           list = list.filter((row) =>
             Object.keys(row).some((key) =>
@@ -115,6 +114,13 @@
       }
     },
 
+    // Fetches events when the component is created
+    created () {
+      if (this.list.length === 0) {
+        this.$store.dispatch('allEvents')
+      }
+    },
+
     methods: {
       truncate (string, value) {
         let res = string
@@ -125,14 +131,10 @@
       },
       getImage (fileName) {
         import(`../uploads/images/events/${fileName}`)
-        return `/dist/${fileName}`
+        return `../dist/${fileName}`
       },
       parseDate (date) {
         return moment(date).format('DD MMM YYYY', 'en')
-      },
-      getInfo (obj) {
-        const description = obj.find((item) => item.main === true)
-        return description.text
       },
       haveCondition (name) {
         return this[name] !== ''

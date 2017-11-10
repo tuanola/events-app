@@ -23,8 +23,8 @@
             {{ person }}
           </span>
       </div>
-      <div >
-        <div v-html="descrActiveLang.text" class="card-body">
+      <div class="container">
+        <div v-html="event.description.text" class="card-body">
         </div>
       </div>
       <div class="clearfix" style="clear:both"></div>
@@ -70,44 +70,30 @@
   import moment from 'moment'
 
   export default {
-    props: {
-      list: Array
-    },
-    data () {
-      return {
-        id: this.$route.params.id
+    created () {
+      if (this.event === {} || !this.event.name) {
+        this.$store.dispatch('eventById', this.$route.params['id'])
       }
     },
     computed: {
       event () {
-        const id = this.id
-        const list = this.$props.list
-        let eventItem
-        if (id) {
-          eventItem = list.find((item) => item._id === id)
-        }
-        return eventItem
-      },
-      descrActiveLang: {
-        get () {
-          return this.event.description.find((item) => item.main === true)
-        }
+        return this.$store.getters.eventById(this.$route.params['id'])
       }
     },
 
     methods: {
       getImage (fileName) {
-        import(`../uploads/images/events/${fileName}`)
-        return `/dist/${fileName}`
+        if (fileName) {
+          console.log('fileName', fileName)
+          import(`../uploads/images/events/${fileName}`)
+          return `../dist/${fileName}`
+        }
       },
       parseDate (date) {
         return moment(date).format('DD MMM YYYY')
       },
       parseDateFromNow (start, end) {
         return (moment(start).diff(moment()) > 0) ? `starts ${moment(start).fromNow()}` : `ends ${moment(end).fromNow()}`
-      },
-      isActiveLang (lang) {
-        return lang === this.descrActiveLang.lang
       }
     },
     watch: {
