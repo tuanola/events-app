@@ -67,9 +67,11 @@
 </style>
 
 <script>
-  import moment from 'moment'
+  import dateMethods from '../mixins/dateMethods'
 
   export default {
+    mixins: [dateMethods],
+
     created () {
       if (this.event === {} || !this.event.name) {
         this.$store.dispatch('eventById', this.$route.params['id'])
@@ -88,12 +90,6 @@
           import(`../uploads/images/events/${fileName}`)
           return `../dist/${fileName}`
         }
-      },
-      parseDate (date) {
-        return moment(date).format('DD MMM YYYY')
-      },
-      parseDateFromNow (start, end) {
-        return (moment(start).diff(moment()) > 0) ? `starts ${moment(start).fromNow()}` : `ends ${moment(end).fromNow()}`
       }
     },
     watch: {

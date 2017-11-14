@@ -75,10 +75,12 @@
 </style>
 
 <script>
-  import moment from 'moment'
+  import dateMethods from '../mixins/dateMethods'
   import { REMOVE_CONDITION } from '../store/mutation-types'
 
   export default{
+    mixins: [dateMethods],
+
     computed: {
       list () {
         return this.$store.getters.allEvents
@@ -132,9 +134,6 @@
       getImage (fileName) {
         import(`../uploads/images/events/${fileName}`)
         return `../dist/${fileName}`
-      },
-      parseDate (date) {
-        return moment(date).format('DD MMM YYYY', 'en')
       },
       haveCondition (name) {
         return this[name] !== ''
