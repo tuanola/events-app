@@ -11,6 +11,10 @@
 </template>
 
 <style>
+  .searchbox {
+    min-height: 100px;
+    padding-bottom: 20px;
+  }
 </style>
 
 <script>

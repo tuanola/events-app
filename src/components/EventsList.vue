@@ -23,11 +23,6 @@
 </template>
 
 <style>
-  img {
-    width: 100%;
-    height: auto;
-    padding-bottom: 20px;
-  }
   .events-list {
     margin-top: 30px;
     margin-bottom: 30px;

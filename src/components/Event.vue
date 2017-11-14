@@ -1,24 +1,6 @@
 <template>
   <div class="event">
-    <h1> {{ event.name }}</h1>
-    <div class="row event-info">
-      <div class="col-md-5">
-        <img :src="getImage(event.picture.main.url)" width="337" height="210">
-      </div>
-      <div class="col-md-7">
-        <div class="row">
-          <div class="col-md-8 dates">
-            <div class="date">
-              <strong>{{ parseDate(event.date.start) }} - {{  parseDate(event.date.end) }}</strong>
-            </div>
-            <div class="fromNow">{{ parseDateFromNow(event.date.start, event.date.end) }}</div>
-          </div>
-          <div class="col-md-4 place">
-            <span v-if="event.place.space">{{ event.place.space }},</span>
-            <span>{{ event.place.city }}, </span>
-            <span>{{ event.place.country }} </span>
-          </div>
-        </div>
+      <div>
           <span v-for="person in event.people" class="person badge">
             {{ person }}
           </span>
@@ -32,7 +14,6 @@
         Links:
         <div><a :href="event.facebook">facebook</a></div>
       </div>
-    </div>
   </div>
 </template>
 
