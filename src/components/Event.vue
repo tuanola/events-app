@@ -1,19 +1,20 @@
 <template>
   <div class="event">
-      <div>
-          <span v-for="person in event.people" class="person badge">
-            {{ person }}
-          </span>
-      </div>
-      <div class="container">
-        <div v-html="event.description.text" class="card-body">
+    <div>
+      <span v-for="person in event.people" class="person badge">
+        {{ person }}
+      </span>
+    </div>
+    <div class="container">
+      <div class="card-body row">
+        <div class="col-md-9" v-html="event.description.text">
+        </div>
+        <div class="col-md-3">
+          <h4>Contacts:</h4>
+          <div><a :href="event.facebook">facebook</a></div>
         </div>
       </div>
-      <div class="clearfix" style="clear:both"></div>
-      <div>
-        Links:
-        <div><a :href="event.facebook">facebook</a></div>
-      </div>
+    </div>
   </div>
 </template>
 

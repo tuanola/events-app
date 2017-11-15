@@ -26,6 +26,7 @@
   }
   .event-header-image {
     max-height: 380px;
+    object-fit: cover;
   }
   .event-title {
     padding-top: 60px;
