@@ -1,5 +1,6 @@
 <template>
   <div class="event">
+    <spinner v-show="showLoader"></spinner>
     <div>
       <span v-for="person in event.people" class="person badge">
         {{ person }}
@@ -50,9 +51,13 @@
 
 <script>
   import dateMethods from '../mixins/dateMethods'
+  import Spinner from 'vue-simple-spinner'
 
   export default {
     mixins: [dateMethods],
+    components: {
+      Spinner
+    },
 
     created () {
       if (this.event === {} || !this.event.name) {
@@ -62,6 +67,9 @@
     computed: {
       event () {
         return this.$store.getters.eventById(this.$route.params['id'])
+      },
+      showLoader () {
+        return this.$store.state.showLoader
       }
     },
 

@@ -19,6 +19,7 @@
     "jwt-decode": "^2.2.0",
     "moment": "^2.19.1",
     "vue": "^2.3.3",
+    "vue-simple-spinner": "^1.2.8",
     "vuex": "^3.0.0"
   },
   "devDependencies": {

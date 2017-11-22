@@ -1,6 +1,7 @@
 <template>
   <div class="events-list">
     <h2>{{ pageTitle }} ({{ filteredList.length }})<small class="filter-condition" v-if="haveCondition('filterKey')" @click="removeCondition('what')">{{ filterKey }}</small><small class="filter-condition" v-if="haveCondition('filterLocation')" @click="removeCondition('where')">{{ filterLocation }}</small></h2>
+    <spinner v-show="showLoader"></spinner>
     <div v-for="item in filteredList" class="row event card card-body">
       <div class="row">
         <div class="col-md-5">
@@ -72,13 +73,20 @@
 <script>
   import dateMethods from '../mixins/dateMethods'
   import { REMOVE_CONDITION } from '../store/mutation-types'
+  import Spinner from 'vue-simple-spinner'
 
-  export default{
+  export default {
     mixins: [dateMethods],
+    components: {
+      Spinner
+    },
 
     computed: {
       list () {
         return this.$store.getters.allEvents
+      },
+      showLoader () {
+        return this.$store.state.showLoader
       },
       filteredList () {
         const filterKey = this.filterKey && this.filterKey.toLowerCase()
