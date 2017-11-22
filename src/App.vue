@@ -9,6 +9,7 @@
               aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
+          <login></login>
           <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
               <li class="nav-item">
@@ -41,8 +42,13 @@
 </template>
 
 <script>
+  import login from './components/Login.vue'
+
   export default {
-    name: 'app'
+    name: 'app',
+    components: {
+      login
+    }
   }
 </script>
 

@@ -4,6 +4,7 @@ import MainHead from '../components/MainHead.vue'
 import EventHead from '../components/EventHead.vue'
 import About from '../pages/About.vue'
 import Contacts from '../pages/Contacts.vue'
+import Callback from '../components/AuthCallback.vue'
 
 export const routes = [
   {
@@ -33,5 +34,9 @@ export const routes = [
       default: Event,
       top: EventHead
     }
+  },
+  {
+    path: '/callback',
+    component: Callback
   }
 ]
