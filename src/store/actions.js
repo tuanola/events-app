@@ -18,6 +18,7 @@ export const eventActions = {
       })
   },
   eventById ({commit}, payload) {
+    console.log('eventById action', `${API_BASE}/event/${payload}`);
     commit(EVENT_BY_ID)
     axios.get(`${API_BASE}/events/${payload}`).then(response => {
       commit(EVENT_BY_ID_SUCCESS, response.data[0])
