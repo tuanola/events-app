@@ -1,27 +1,27 @@
 <template>
-    <div>
-        <header-component/>
-        <div>this is template body</div>
-        <other-component/>
-    </div>
+  <b-navbar toggleable="lg" type="dark" variant="dark">
+    <b-navbar-brand href="/">Volta ao Mundo</b-navbar-brand>
+    <b-navbar-toggle target="navbarResponsive"></b-navbar-toggle>
+    <b-collapse is-nav id="navbarResponsive">
+      <b-navbar-nav class="mr-auto">
+         <b-nav-item>
+           <router-link to="/about" class="nav-link">About</router-link>
+         </b-nav-item>
+         <b-nav-item>
+           <router-link to="/contacts" class="nav-link">Contact</router-link>
+         </b-nav-item>
+        </b-navbar-nav>
+        <login></login>
+    </b-collapse>
+  </b-navbar>
 </template>
-<style>
-    body{
-        background-color:#ff0000;
-    }
-</style>
+
 <script>
-    import HeaderComponent from './components/header.vue'
-    import OtherComponent from './components/other.vue'
-    export default{
-        data(){
-            return{
-                msg:'hello vue'
-            }
-        },
-        components:{
-            'other-component':OtherComponent,
-            HeaderComponent,
-        }
+    import Login from '../components/Login.vue'
+
+    export default {
+      components: {
+        Login
+      }
     }
 </script>
