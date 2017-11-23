@@ -1,5 +1,5 @@
 <template>
-  <b-navbar toggleable="lg" type="dark" variant="dark">
+  <b-navbar toggleable="lg" type="dark" variant="dark" class="events-navbar">
     <b-navbar-brand href="/">Volta ao Mundo</b-navbar-brand>
     <b-navbar-toggle target="navbarResponsive"></b-navbar-toggle>
     <b-collapse is-nav id="navbarResponsive">
