@@ -265,8 +265,8 @@
       closeCal() {
         this.$refs.endDateInput.blur();
         this.$refs.startDateInput.blur();
-        if (this.selectedStartDate) this.startDateLabel = this.selectedStartDate.format(this.format);
-        if (this.selectedEndDate) this.endDateLabel = this.selectedEndDate.format(this.format);
+        if (this.selectedStartDate) this.startDateLabel = moment(this.selectedStartDate).format(this.format);
+        if (this.selectedEndDate) this.endDateLabel = moment(this.selectedEndDate).format(this.format);
         this.potentialStartDate = this.startDateLabel;
         this.potentialEndDate = this.endDateLabel;
         this.$refs.pointer.style.left = '90px';

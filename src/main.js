@@ -9,6 +9,7 @@ import BootstrapVue from 'bootstrap-vue'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 import 'bootstrap/dist/css/bootstrap.css'
 import './css/main.css'
+import './css/font-awesome.css'
 
 Vue.use(VueRouter)
 Vue.use(BootstrapVue)

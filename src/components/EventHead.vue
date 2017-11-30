@@ -2,6 +2,11 @@
   <div class="row event-header">
     <div class="col-md-6"><img :src="getImage(event.picture.main.url)" width="337" height="210" class="event-header-image"></div>
     <div class="col-md-6 event-title">
+      <div class="float-right edit-icon"><i class="fa fa-pencil-square-o fa-2x" aria-hidden="true" @click="showModal = true"></i></div>
+      <modal v-if="showModal" @close="showModal = false" class="edit-modal">
+        <h5 slot="header">Edit Event</h5>
+        <edit slot="body"></edit>
+      </modal>
       <h1>
         {{ event.name }}
       </h1>
@@ -35,13 +40,36 @@
   .header-datefromnow {
     font-size: 0.9rem;
   }
+  .edit-icon {
+    position: relative;
+    top: -20px;
+    opacity: 0.5;
+  }
+  .edit-icon:hover {
+    opacity: 1;
+  }
+  .edit-modal {
+    position: absolute;
+  }
 </style>
 
 <script>
   import dateMethods from '../mixins/dateMethods'
+  import Edit from './EditEvent.vue'
+  import Modal from './Modal.vue'
 
   export default {
     mixins: [dateMethods],
+    components: {
+      Modal,
+      Edit
+    },
+
+    data () {
+      return {
+        showModal: false
+      }
+    },
 
     computed: {
       event () {
