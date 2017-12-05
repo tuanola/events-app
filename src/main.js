@@ -5,6 +5,7 @@ import { routes } from './router/router.js'
 import { store } from './store/store.js'
 
 import BootstrapVue from 'bootstrap-vue'
+import VeeValidate from 'vee-validate'
 
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 import 'bootstrap/dist/css/bootstrap.css'
@@ -13,6 +14,7 @@ import './css/font-awesome.css'
 
 Vue.use(VueRouter)
 Vue.use(BootstrapVue)
+Vue.use(VeeValidate)
 
 const router = new VueRouter({
   routes,

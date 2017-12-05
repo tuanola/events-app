@@ -8,7 +8,7 @@
             <slot name="header">
               Modal
             </slot>
-            <button type="button" class="close" @click="$emit('close')">
+            <button type="button" class="close" @click="$emit('modalClose')">
               <span>&times;</span>
             </button>
           </div>
@@ -21,8 +21,8 @@
 
           <div class="modal-footer">
             <slot name="footer">
-              <a href="#" class="btn btn-primary" @click="$emit('close')">OK</a>
-              <a href="#" class="btn btn-light" @click="$emit('close')">Cancel</a>
+              <a href="#" class="btn btn-primary" @click="$emit('modalOk')">OK</a>
+              <a href="#" class="btn btn-light" @click="$emit('modalClose')">Cancel</a>
             </slot>
           </div>
         </div>

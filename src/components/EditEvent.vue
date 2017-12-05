@@ -3,7 +3,11 @@
   <div class="form-group row">
     <label for="name" class="col-sm-2 col-form-label">Name:</label>
     <div class="col-sm-10">
-      <input type="text" class="form-control" id="name" v-model="event.name">
+      <input v-validate.initial="'required'" name="name" type="text" class="form-control" :class="{'input': true, 'is-invalid': errors.has('name') }" id="name" v-model="event.name">
+      <div v-show="errors.has('name')" class="invalid-feedback">
+        <i class="fa fa-warning"></i>
+        <span>{{ errors.first('name') }}</span>
+      </div>
     </div>
   </div>
     <div class="form-group">
@@ -91,6 +95,20 @@ export default {
     },
     getDates () {
       console.log('dates')
+    },
+    changeData () {
+      console.log('OK click')
+    },
+    handleOk () {
+      this.$validator.validateAll().then((result) => {
+        if (result) {
+          this.updateEvent(this.event)
+          this.$emit('modalClose')
+        }
+      })
+    },
+    updateEvent (event) {
+      this.$store.dispatch('updateEvent', event)
     }
   }
 }
