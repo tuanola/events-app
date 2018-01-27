@@ -2,10 +2,11 @@
 </template>
 
 <script>
-import { setIdToken, setAccessToken } from '../auth/AuthService'
+import { getUser, setIdToken, setAccessToken } from '../auth/AuthService'
 export default {
   name: '',
   mounted () {
+    getUser()
     this.$nextTick(() => {
       setAccessToken()
       setIdToken()

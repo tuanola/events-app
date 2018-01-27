@@ -1,6 +1,7 @@
 import decode from 'jwt-decode'
 import auth0 from 'auth0-js'
 import Router from 'vue-router'
+import axios from 'axios'
 
 const ID_TOKEN_KEY = 'id_token'
 const ACCESS_TOKEN_KEY = 'access_token'
@@ -33,6 +34,16 @@ export function logout () {
   clearIdToken()
   clearAccessToken()
   router.go('/')
+}
+
+export function getUser () {
+  let config = {
+    headers: {'Authorization': `Bearer ${localStorage.getItem(ACCESS_TOKEN_KEY)}`}
+  }
+  axios.get(`https://events-app.auth0.com/userinfo`, config)
+    .then(response => {
+      console.log('getUser:', response)
+    })
 }
 
 export function isLoggedIn () {

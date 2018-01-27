@@ -2,7 +2,7 @@
   <div class="row event-header">
     <div class="col-md-6"><img :src="getImage(event.picture.main.url)" width="337" height="210" class="event-header-image"></div>
     <div class="col-md-6 event-title">
-      <div class="float-right edit-icon"><i class="fa fa-pencil-square-o fa-2x" aria-hidden="true" @click="showModal = true"></i></div>
+      <div v-show="isLoggedIn()" class="float-right edit-icon"><i class="fa fa-pencil-square-o fa-2x" aria-hidden="true" @click="showModal = true"></i></div>
       <modal v-if="showModal" @modalClose="showModal = false" @modalOk="handleOk" class="edit-modal">
         <h5 slot="header">Edit Event</h5>
         <edit slot="body" ref="editEvent" @modalClose="showModal = false"></edit>
@@ -58,6 +58,8 @@
   import Edit from './EditEvent.vue'
   import Modal from './Modal.vue'
 
+  import { isLoggedIn } from '../auth/AuthService'
+
   export default {
     mixins: [dateMethods],
     components: {
@@ -87,6 +89,9 @@
       },
       handleOk () {
         this.$refs.editEvent.handleOk()
+      },
+      isLoggedIn () {
+        return isLoggedIn()
       }
     }
   }
