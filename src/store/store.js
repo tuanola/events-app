@@ -1,11 +1,11 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
+import Vue from 'vue';
+import Vuex from 'vuex';
 
-import { eventMutations, filterMutations } from './mutations'
-import { eventGetters } from './getters'
-import { eventActions } from './actions'
+import { eventMutations, filterMutations } from './mutations';
+import { eventGetters } from './getters';
+import { eventActions } from './actions';
 
-Vue.use(Vuex)
+Vue.use(Vuex);
 
 export const store = new Vuex.Store({
   state: {
@@ -20,4 +20,4 @@ export const store = new Vuex.Store({
   getters: Object.assign({}, eventGetters),
   mutations: Object.assign({}, filterMutations, eventMutations),
   actions: Object.assign({}, eventActions)
-})
+});
