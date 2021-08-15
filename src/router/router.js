@@ -1,10 +1,10 @@
-import EventsList from '../components/EventsList.vue'
-import Event from '../components/Event.vue'
-import MainHead from '../components/MainHead.vue'
-import EventHead from '../components/EventHead.vue'
-import About from '../pages/About.vue'
-import Contacts from '../pages/Contacts.vue'
-import Callback from '../components/AuthCallback.vue'
+import EventsList from '../components/EventsList.vue';
+import Event from '../components/Event.vue';
+import MainHead from '../components/MainHead.vue';
+import EventHead from '../components/EventHead.vue';
+import About from '../pages/About.vue';
+import Contacts from '../pages/Contacts.vue';
+import Callback from '../components/AuthCallback.vue';
 
 export const routes = [
   {
@@ -39,4 +39,4 @@ export const routes = [
     path: '/callback',
     component: Callback
   }
-]
+];

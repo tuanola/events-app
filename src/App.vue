@@ -13,7 +13,7 @@
     </div>
     <footer class="py-5 bg-dark">
       <div class="container">
-        <p class="m-0 text-center text-white">Copyright © Volta ao Mundo 2017</p>
+        <p class="m-0 text-center text-white">Copyright © Volta ao Mundo 2021</p>
       </div>
     </footer>
   </div>
